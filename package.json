@@ -19,7 +19,7 @@
   "dependencies": {
     "datasaur-filter": "^1.0.1",
     "fin-hypergrid": "3.0.0 - *",
-    "fin-hypergrid-filtering-plugin": "git://github.com/fin-hypergrid/fin-hypergrid-filtering-plugin#v1.0.0"
+    "fin-hypergrid-filtering-plugin": "git://github.com/fin-hypergrid/fin-hypergrid-filtering-plugin#1.0.0"
   },
   "devDependencies": {
     "gulp": "^3.9.1",
