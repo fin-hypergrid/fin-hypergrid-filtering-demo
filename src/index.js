@@ -1,24 +1,52 @@
 'use strict';
 
-// "require" dependencies
+// "require" external dependencies
 var Hypergrid = require('fin-hypergrid'),
-    makeData = require('./make-data');
+    DataModelLocal = require('datasaur-local'),
+    DataModelFilter = require('datasaur-filter');
 
-// instantiate
+// "require" local dependencies
+var makeData = require('./make-data');
+
+// build data, data model
 var data = makeData(),
-    grid = new Hypergrid;
+    dataModel = new DataModelFilter(new DataModelLocal);
 
-grid.setData(data);
+var grid = window.grid = new Hypergrid({
+    dataModel: dataModel,
+    data: data
+});
 
-// append filter data source
-grid.behavior.dataModel.append(require('datasaur-filter'));
+var filterExpressionLabel = document.querySelector('label'),
+    filterExpressionTextBox = document.getElementById('filter-expression'),
+    traditionalSyntaxCheckBox = document.querySelector('input[type=checkbox]'),
+    errorBox = document.getElementById('error');
 
-// install api (plugin)
-grid.installPlugins(require('fin-hypergrid-filtering-plugin'));
+var columnNames = grid.behavior.schema.map(function(columnSchema) { return columnSchema.name; });
+filterExpressionLabel.title = 'Column names:\n' + columnNames.join('\n');
 
-grid.properties.renderFalsy = true;
-grid.properties.showFilterRow = true;
+filterExpressionTextBox.onkeypress = function(event) {
+    if (event.key === 'Enter') {
+        setFilter();
+        this.blur();
+    }
+};
 
-grid.behavior.dataModel.filter = grid.plugins.hyperfilter.create();
+traditionalSyntaxCheckBox.onchange = setFilter;
 
-window.grid = grid;
+function setFilter() {
+    var errText = '',
+        expression = filterExpressionTextBox.value,
+        options = {
+            vars: [],
+            syntax: traditionalSyntaxCheckBox.checked ? 'traditional' : 'javascript'
+        };
+
+    try {
+        grid.behavior.dataModel.setFilter(expression, options);
+    } catch (err) {
+        errText = err;
+    }
+
+    errorBox.innerHTML = errText;
+}

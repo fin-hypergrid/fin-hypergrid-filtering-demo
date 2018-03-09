@@ -1,6 +1,6 @@
 {
   "name": "fin-hypergrid-filtering-demo",
-  "version": "1.0.0",
+  "version": "3.0.0",
   "description": "Sample code implements a data filter",
   "main": "index.js",
   "scripts": {
@@ -17,13 +17,8 @@
   },
   "homepage": "https://github.com/fin-hypergrid/fin-hypergrid-filtering-demo#readme",
   "dependencies": {
-    "datasaur-filter": "^1.0.1",
-    "fin-hypergrid": "3.0.0 - *",
-    "fin-hypergrid-filtering-plugin": "git://github.com/fin-hypergrid/fin-hypergrid-filtering-plugin#1.0.0"
-  },
-  "devDependencies": {
-    "gulp": "^3.9.1",
-    "gulp-browserify": "^0.5.1",
-    "gulp-util": "^3.0.8"
+    "datasaur-filter": "github:fin-hypergrid/datasaur-filter",
+    "datasaur-local": "github:fin-hypergrid/datasaur-local#3.0.0",
+    "fin-hypergrid": "github:joneit/core#v3.0.0"
   }
 }

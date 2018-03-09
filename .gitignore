@@ -1,7 +1,4 @@
 .DS_Store
 /.idea
-/doc
 /node_modules*
 /build
-~*.*x
-/v*.*.*
