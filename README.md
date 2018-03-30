@@ -85,18 +85,18 @@ This `setFilter` accepts:
 2. A string containing JavaScript expression which is turned into a predicate function.
 3. An API containing a predicate function in a `test` method.
 
-**Predicate function** — Just be aware that, as the `datasaur-filter` README notes, the predicate used by `setFilter` differs slightly from that of `buildIndex`, discussed above. It is called with the data row object rather than the data row index:
+**Predicate function** overload — Just be aware that, as the `datasaur-filter` README notes, the predicate used by `setFilter` differs slightly from that of `buildIndex`, discussed above. It is called with the data row object rather than the data row index:
 ```js
 function predicate(dataRow) { return dataRow.number_of_pets <= 3; }
 grid.behavior.dataModel.setFilter(predicate);
 ```
 
-**Sring** — You can send the filter string to `setFilter` as is:
+**String** overload — You can send the filter string to `setFilter` as is:
 ```js
 grid.behavior.dataModel.setFilter('nubmer_of_pewts <= 3');
 ```
 
-**API**
+**API** overload
 ```js
 function predicate(dataRow) { return dataRow.number_of_pets <= 3; }
 var API = {
@@ -105,7 +105,7 @@ var API = {
 grid.behavior.dataModel.setFilter(API);
 ```
 
-In any case a call to `apply` must follow eventaully:
+In any case, a call to `apply` must follow eventaully:
 ```js
 grid.behavior.dataModel.apply();
 ```

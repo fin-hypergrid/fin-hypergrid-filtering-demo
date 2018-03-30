@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/fin-hypergrid/fin-hypergrid-filtering-demo#readme",
   "dependencies": {
-    "datasaur-filter": "github:fin-hypergrid/datasaur-filter",
+    "datasaur-filter": "github:fin-hypergrid/datasaur-filter#3.0.0",
     "datasaur-local": "github:fin-hypergrid/datasaur-local#3.0.0",
     "fin-hypergrid": "github:joneit/core#v3.0.0"
   }
