@@ -9,16 +9,19 @@
 
 <div id="error" style="float:right; color:red"></div>
 
-<label style="cursor:help" for="filter-expression">Filter expression:</label>
-<label style="margin-left:8em" title="Traditional syntax (à la VB or SQL) converts:
-and  ⤏  &&
-or  ⤏  ||
-not  ⤏  !
-=  ⤏  ===
-<>  ⤏  !==">
-    <input type="checkbox">
-    <span style="cursor:help">Accept traditional syntax</span>
+Expression syntax:
+<span id="expression-syntax-chooser">
+    <label><input type="radio" name="syntax" value="javascript" checked> JavaScript</label>
+    <small>(<a target="whatzit" href="https://developer.mozilla.org/docs/Web/JavaScript/Guide/Expressions_and_Operators">help</a>)</small>
+
+    <label><input type="radio" name="syntax" value="traditional"> Traditional</label>
+    <small>(<a target="whatzit" href="trad-syntax.html">help</a>)</small>
+</span>
+
+<label style="margin-top:6px; display:block" for="filter-expression">
+    Filter expression using <a style="cursor:help" href="javascript:void 0" onclick="alert(this.title)">column names</a>:
 </label>
+
 <input id="filter-expression" type="text" style="width:99%; margin:.5em 0 1em" onfocus="document.getElementById('error').innerHTML = ''">
 
 <script src="build/index.js"></script>

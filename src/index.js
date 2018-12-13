@@ -17,29 +17,37 @@ var grid = window.grid = new Hypergrid({
     data: data
 });
 
-var filterExpressionLabel = document.querySelector('label'),
+var filterExpressionHelp = document.querySelector('a'),
     filterExpressionTextBox = document.getElementById('filter-expression'),
-    traditionalSyntaxCheckBox = document.querySelector('input[type=checkbox]'),
+    expressionSyntaxChooser = document.getElementById('expression-syntax-chooser'),
+    radioButtons = expressionSyntaxChooser.querySelectorAll('input[type=radio]'),
     errorBox = document.getElementById('error');
 
 var columnNames = grid.behavior.schema.map(function(columnSchema) { return columnSchema.name; });
-filterExpressionLabel.title = 'Column names:\n' + columnNames.join('\n');
+filterExpressionHelp.title = 'Column names:\n' + columnNames.join('\n');
 
 filterExpressionTextBox.onkeypress = function(event) {
     if (event.key === 'Enter') {
-        setFilter();
+        var checkedRadioButton = Array.prototype.find.call(radioButtons, buttonIsChecked),
+            event = { target: checkedRadioButton };
+
+        setFilter(event);
         this.blur();
     }
 };
 
-traditionalSyntaxCheckBox.onchange = setFilter;
+function buttonIsChecked(radioButton) {
+    return radioButton.checked;
+}
 
-function setFilter() {
+expressionSyntaxChooser.onchange = setFilter;
+
+function setFilter(e) {
     var errText = '',
         expression = filterExpressionTextBox.value,
         options = {
             vars: [],
-            syntax: traditionalSyntaxCheckBox.checked ? 'traditional' : 'javascript'
+            syntax: e.target.value
         };
 
     try {

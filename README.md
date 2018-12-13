@@ -48,11 +48,11 @@ Now all rows are visible again.
 
 Just enter an expression into the **Filter** text field incorporating column names (not column headers) and hit the **Enter** key.
 
-> NOTE: You can hover the mouse over the **Filter** label to see a list of the column names.
+> NOTE: Click or hover over the **column names** link to see a list of the column names.
 
 To remove the filter and show all rows again, blank the filter text box and hit the **Enter** key.
 
-Check the "Accept traditional syntax" checkbox to set `datasaur-filter`'s `syntax` option to `'traditional'`.
+Select the **Traditional** expression syntax" radio button to set `datasaur-filter`'s `syntax` option to `'traditional'`.
 
 See [`onkeypress`](https://github.com/fin-hypergrid/fin-hypergrid-filtering-demo/blob/master/src/index.js#L36-L54) in src/index.js for the handler.
 
@@ -111,3 +111,9 @@ grid.behavior.dataModel.apply();
 ```
 
 This app also demonstrates the `setFilter` options, `vars`, which checks the expression for syntax and reference errors at instantiation time rather than later at filter run time; and `syntax` which converts the filter expression from the named syntax to JavaScript syntax. See [`datasaur-filter`](https://github.com/datasaur-filter) for more information.
+
+### Version History
+* `3.0.1` — 12/12/2018
+    * Changed dev dependencies to refer to npm registry versions (instead of github tags)
+* `3.0.0` — 3/30/2018
+    * Initial release
